@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace App\Infrastructure\Ui\Web\Pages;
 
-use App\Infrastructure\Ui\Web\CakeView;
+use App\Infrastructure\Ui\Web\CakeRenderer;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -22,7 +22,7 @@ class DisplayService
 
     public function __invoke() : ResponseInterface
     {
-        $view = new CakeView($this->request);
+        $view = new CakeRenderer($this->request);
         $view->setTemplatePath('Pages');
 
         return $this->response->withStringBody($view->render('display'));

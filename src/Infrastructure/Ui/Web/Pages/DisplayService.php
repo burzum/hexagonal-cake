@@ -3,9 +3,8 @@ declare(strict_types = 1);
 
 namespace App\Infrastructure\Ui\Web\Pages;
 
-use App\Infrastructure\Ui\Web\CakeView;
+use App\Infrastructure\Renderer\Render;
 use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface;
 
 /**
  * Pages Display Service
@@ -20,12 +19,27 @@ class DisplayService
         $this->response = $container->get('response');
     }
 
-    public function __invoke() : ResponseInterface
+    public function __invoke()
     {
-        $view = new CakeView($this->request);
-        $view->setTemplatePath('Pages');
+        $path = ($this->request->getParam('pass'));
+        $count = count($path);
 
-        return $this->response->withStringBody($view->render('display'));
+        if ($count === 0) {
+            return $this->response->withStatus(404);
+        }
+
+        if ($count === 1) {
+            $page = $path[0];
+        } else {
+            $page = $path[$count - 1];
+            unset($path[$count -1 ]);
+        }
+
+        $path = 'Pages' . '/' . implode((array)$path, '/');
+
+        return (new Render())
+            ->setTemplatePath($path)
+            ->setTemplate($page);
     }
 
 }

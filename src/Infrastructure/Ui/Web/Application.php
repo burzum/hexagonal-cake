@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Ui\Web;
 
+use App\Infrastructure\Renderer\CakeRenderer;
+use App\Infrastructure\Renderer\JsonRenderer;
+use App\Infrastructure\Renderer\Render;
 use Cake\Core\Configure;
 use Cake\Error\Middleware\ErrorHandlerMiddleware;
 use Cake\Event\EventManagerInterface;
@@ -75,9 +78,10 @@ class Application extends BaseApplication
         self::getContainer()->add('container', self::getContainer());
         self::getContainer()->add('request', $request);
         self::getContainer()->add('response', $response);
-        self::getContainer()->add('renderer', function() use ($request) {
-            return new CakeView($request);
-        });
+
+        if (!class_exists($class)) {
+            return $response->withStatus(404);
+        }
 
         self::getContainer()
             ->add($class)
@@ -85,7 +89,19 @@ class Application extends BaseApplication
 
         $service = self::getContainer()->get($class);
 
-        return $service();
+        $result = $service();
+
+        if ($result instanceof ResponseInterface) {
+            return $response;
+        }
+
+        if ($result instanceof Render) {
+            $renderer = new CakeRenderer();
+
+            return $response->withStringBody($renderer->render($result));
+        }
+
+        return $response;
     }
 
 }
