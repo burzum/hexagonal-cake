@@ -26,6 +26,10 @@ This application skeleton is trying to implement a hexagonal architecture using 
 * Point your web server config for the host you are using to the `public` folder
 * Done
 
+## Documentation
+
+Check the [docs](https://github.com/burzum/hexagonal-cake/tree/master/docs/Index.md) folder of this repository.
+
 ## Additional Libs besides CakePHP
 
 * [League\Container](http://container.thephpleague.com/)
