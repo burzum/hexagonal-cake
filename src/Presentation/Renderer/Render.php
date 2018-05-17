@@ -1,8 +1,13 @@
 <?php
 declare(strict_types = 1);
 
-namespace App\Infrastructure\Renderer;
+namespace App\Presentation\Renderer;
 
+/**
+ * Render
+ *
+ * A Data Transfer Object that is passed to a renderer to render something
+ */
 class Render implements RenderInterface
 {
     protected $viewVars = [];

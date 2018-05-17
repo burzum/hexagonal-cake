@@ -3,24 +3,24 @@ declare(strict_types = 1);
 
 namespace App\Infrastructure\Ui\Web\Pages;
 
-use App\Infrastructure\Renderer\Render;
+use App\Application\Http\Controller\AbstractController;
+use App\Infrastructure\Persistence\Database\Table\UsersTable;
+use App\Presentation\Renderer\Render;
+use Cake\Http\Response;
 use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Pages Display Service
  */
-class DisplayService
+class DisplayController extends AbstractController
 {
-
-    public function __construct(ContainerInterface $container)
-    {
-        $this->container = $container;
-        $this->request = $container->get('request');
-        $this->response = $container->get('response');
-    }
-
     public function __invoke()
     {
+
+        $table = new UsersTable();
+        $table->find('first');
+
         $path = ($this->request->getParam('pass'));
         $count = count($path);
 

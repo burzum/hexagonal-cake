@@ -1,18 +1,15 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
-namespace App\Infrastructure\Ui\Web;
+namespace App\Application\Http;
 
-use App\Infrastructure\Renderer\CakeRenderer;
-use App\Infrastructure\Renderer\JsonRenderer;
-use App\Infrastructure\Renderer\Render;
+use App\Application\Http\Dispatcher\CommandDispatcher;
 use Cake\Core\Configure;
 use Cake\Error\Middleware\ErrorHandlerMiddleware;
 use Cake\Event\EventManagerInterface;
 use Cake\Http\BaseApplication;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
-use Cake\Utility\Inflector;
 use League\Container\Container;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -26,6 +23,12 @@ class Application extends BaseApplication
 
     protected static $container;
 
+    /**
+     * Constructor
+     *
+     * @param string $configDir Config Directory
+     * @param EventManagerInterface $eventManager Event Manager
+     */
     public function __construct($configDir, EventManagerInterface $eventManager = null)
     {
         parent::__construct($configDir, $eventManager);
@@ -62,46 +65,7 @@ class Application extends BaseApplication
 
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next)
     {
-        $class = [
-            $request->getParam('plugin'),
-            'App',
-            'Infrastructure',
-            'Ui',
-            'Web',
-            $request->getParam('prefix'),
-            $request->getParam('controller'),
-            Inflector::classify($request->getParam('action')) . 'Service'
-        ];
-
-        $class = implode(array_filter($class), '\\');
-
-        self::getContainer()->add('container', self::getContainer());
-        self::getContainer()->add('request', $request);
-        self::getContainer()->add('response', $response);
-
-        if (!class_exists($class)) {
-            return $response->withStatus(404);
-        }
-
-        self::getContainer()
-            ->add($class)
-            ->withArgument('container');
-
-        $service = self::getContainer()->get($class);
-
-        $result = $service();
-
-        if ($result instanceof ResponseInterface) {
-            return $response;
-        }
-
-        if ($result instanceof Render) {
-            $renderer = new CakeRenderer();
-
-            return $response->withStringBody($renderer->render($result));
-        }
-
-        return $response;
+        return (new CommandDispatcher())->dispatch($request, $response);
     }
 
 }

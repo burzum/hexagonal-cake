@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace App\Infrastructure\Renderer;
+namespace App\Presentation\Renderer;
 
 interface RendererInterface
 {

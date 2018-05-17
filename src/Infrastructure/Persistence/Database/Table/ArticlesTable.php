@@ -5,16 +5,16 @@ use Cake\Datasource\ConnectionManager;
 use Cake\ORM\Table;
 
 /**
- * Users Table
+ * Articles Table
  */
-class UsersTable extends Table
+class ArticlesTable extends Table
 {
 
     public function initialize(array $config)
     {
         parent::initialize($config);
 
-        $this->setTable('users');
+        $this->setTable('articles');
         $this->setPrimaryKey('id');
         $this->setConnection(ConnectionManager::get('default'));
     }

@@ -2,26 +2,38 @@
 
 **This is a pure learning project and proof of concept! NOT ready for production!**
 
-This application skeleton is trying to implement a hexagonal architecture using the goodies of the CakePHP framework.
+A hexagonal architecture is using ports and adapters to communicate and separate different layers of your application.
 
-If this is done right it should be easy to replace the whole ORM or view rendering with another implementation.
+This application skeleton is trying to implement a hexagonal architecture using the goodies of the CakePHP framework.
 
 ## Goals
 
+* **Learning something about software architecture**
 * Trying to stay [PSR](https://www.php-fig.org/psr/) compatible with all interfaces
 * Trying to follow [php-pds](https://github.com/php-pds/skeleton)
 * Trying to use a DIC (League/Container)
 * Trying to use more [IoC](https://en.wikipedia.org/wiki/Inversion_of_control)
 * Trying to typehint almost everything
-* Learning something about architecture
+* Trying [CQRS](https://martinfowler.com/bliki/CQRS.html) but other approaches as well to serve pages
 
 ## Installation
 
 * Clone the repository `git@github.com:burzum/hexagonal-cake.git`
+* Go into the folder `cd hexagonal-cake`
 * Run composer `composer install`
-* Copy `config/app.default.php` to `confg/app.php`
+* Copy `config/app.default.php` to `config/app.php`
+* Configure the database connection in your `app.php`
 * Point your web server config for the host you are using to the `public` folder
 * Done
+
+## Additional Libs besides CakePHP
+
+* League\Container
+* League\Tacitician
+
+## Useful links
+
+* Video [Matthias Noback - Hexagonal Architecture - Message-Oriented Software Design](https://www.youtube.com/watch?v=K1EJBmwg9EQ&t=2161s)
 
 ## License
 

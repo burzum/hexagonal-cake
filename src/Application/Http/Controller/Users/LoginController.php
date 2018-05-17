@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace App\Infrastructure\Ui\Web\Pages;
+namespace App\Application\Http;
 
-use App\Infrastructure\Ui\Web\CakeRenderer;
+use App\Presentation\Renderer\CakeRenderer;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 
