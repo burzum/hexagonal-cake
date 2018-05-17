@@ -14,7 +14,6 @@ This application skeleton is trying to implement a hexagonal architecture using 
 * Trying to use a DIC (League/Container)
 * Trying to use more [IoC](https://en.wikipedia.org/wiki/Inversion_of_control)
 * Trying to typehint almost everything
-* Trying [CQRS](https://martinfowler.com/bliki/CQRS.html) but other approaches as well to serve pages
 
 ## Installation
 
