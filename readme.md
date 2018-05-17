@@ -28,12 +28,16 @@ This application skeleton is trying to implement a hexagonal architecture using 
 
 ## Additional Libs besides CakePHP
 
-* League\Container
-* League\Tacitician
+* [League\Container](http://container.thephpleague.com/)
+* [League\Tacitician](http://tactician.thephpleague.com/)
 
 ## Useful links
 
-* Video [Matthias Noback - Hexagonal Architecture - Message-Oriented Software Design](https://www.youtube.com/watch?v=K1EJBmwg9EQ&t=2161s)
+* Books
+  * Martin Fowler [Patterns of Enterprise Application Architecture](https://martinfowler.com/books/eaa.html)
+* Links / Articles
+* Videos
+  * [Matthias Noback - Hexagonal Architecture - Message-Oriented Software Design](https://www.youtube.com/watch?v=K1EJBmwg9EQ&t=2161s)
 
 ## License
 
