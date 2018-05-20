@@ -9,11 +9,12 @@ This application skeleton is trying to implement a hexagonal architecture using 
 ## Goals
 
 * **Learning something about software architecture**
-* Trying to stay [PSR](https://www.php-fig.org/psr/) compatible with all interfaces
-* Trying to follow [php-pds](https://github.com/php-pds/skeleton)
-* Trying to use a DIC (League/Container)
-* Trying to use more [IoC](https://en.wikipedia.org/wiki/Inversion_of_control)
-* Trying to typehint almost everything
+* Stay [PSR](https://www.php-fig.org/psr/) compatible with all interfaces if possible
+* Follow [php-pds](https://github.com/php-pds/skeleton)
+* Using [DI](https://en.wikipedia.org/wiki/Dependency_injection) container
+* Use [IoC](https://en.wikipedia.org/wiki/Inversion_of_control) where it makes sense
+* [Typehint](http://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration) almost everything
+* Using a [command bus](https://tactician.thephpleague.com/) (but no [CQRS](https://martinfowler.com/bliki/CQRS.html))
 
 ## Installation
 
@@ -37,10 +38,10 @@ Check the [docs](https://github.com/burzum/hexagonal-cake/tree/master/docs/Index
 ## Useful links
 
 * Books
-  * Martin Fowler [Patterns of Enterprise Application Architecture](https://martinfowler.com/books/eaa.html)
+  * Martin Fowler: [Patterns of Enterprise Application Architecture](https://martinfowler.com/books/eaa.html)
 * Links / Articles
 * Videos
-  * [Matthias Noback - Hexagonal Architecture - Message-Oriented Software Design](https://www.youtube.com/watch?v=K1EJBmwg9EQ&t=2161s)
+  * Matthias Noback: [Hexagonal Architecture - Message-Oriented Software Design](https://www.youtube.com/watch?v=K1EJBmwg9EQ&t=2161s)
 
 ## License
 

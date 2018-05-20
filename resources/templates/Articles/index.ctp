@@ -13,4 +13,5 @@
             </section>
         </li>
     <?php endforeach; ?>
+    <?php echo $this->Paginator->numbers(); ?>
 </ul>

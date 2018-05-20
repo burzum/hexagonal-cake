@@ -1,11 +1,12 @@
 <?php
 namespace App\Infrastructure\Email;
+
 use Cake\Mailer\Mailer;
 
 /**
- * Mailer Interface
+ * Abstract Cake mailer
  */
-class CakeMailer implements MailerInterface {
+abstract class AbstractCakeMailer implements MailerInterface {
 
     /**
      * Mailer
@@ -16,8 +17,6 @@ class CakeMailer implements MailerInterface {
         $this->mailer = $mailer;
     }
 
-    public function send(EmailInterface $email) {
-
-    }
+    abstract public function send(EmailInterface $email);
 
 }

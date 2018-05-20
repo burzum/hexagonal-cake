@@ -11,12 +11,13 @@ use Cake\Http\BaseApplication;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
 use League\Container\Container;
+use League\Container\ReflectionContainer;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * Application
+ * HTTP Web Based Application
  */
 class Application extends BaseApplication
 {
@@ -34,6 +35,7 @@ class Application extends BaseApplication
         parent::__construct($configDir, $eventManager);
 
         static::$container = new Container();
+        static::$container->delegate(new ReflectionContainer());
     }
 
     public static function getContainer(): ContainerInterface

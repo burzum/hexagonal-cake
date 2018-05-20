@@ -1,6 +1,9 @@
 <?php
 namespace App\Application\Http\Controller;
 
+/**
+ * AbstractController
+ */
 abstract class AbstractController {
 
     protected $container;

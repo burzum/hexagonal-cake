@@ -1,4 +1,6 @@
 <?php
+declare(strict_types = 1);
+
 namespace App\Domain\Repository;
 
 use Cake\ORM\Locator\TableLocator;
@@ -8,15 +10,17 @@ use Cake\ORM\Locator\TableLocator;
  */
 class ArticlesRepository
 {
-    public function __construct()
-    {
-
-    }
-
-    public function paginatePublicArticles()
+    /**
+     *
+     */
+    public function getPublicArticles()
     {
         $locator = new TableLocator();
         $articles = $locator->get('articles');
-        return $articles->find()->all();
+
+        return $articles->find()
+            ->where([
+                'is_published' => true
+            ]);
     }
 }
